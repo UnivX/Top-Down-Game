@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="File di risorse">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{5fa0689d-6efd-4eb2-b121-0214d99ff42f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{a32bcda3-fa39-4fc3-b892-2780d5f9f793}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{b41b0696-c444-4164-b6bd-80746646d5b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\LighEngine">
+      <UniqueIdentifier>{f2b29deb-eeab-4f3a-9d26-3778c3fcea0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entities">
+      <UniqueIdentifier>{a593b9fc-cb53-4413-a9f3-7ce801f28976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ComponentSystem">
+      <UniqueIdentifier>{59b2ab1e-e1f7-4ea4-9558-7b0a6a24d1b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ComponentSystem\Components">
+      <UniqueIdentifier>{b975d4c1-2ac0-4f9c-a108-ac9b20138e8a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ComponentSystem.cpp">
+      <Filter>Game\ComponentSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="LightEngine.cpp">
+      <Filter>Game\LighEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="LightMeshComponent.cpp">
+      <Filter>Game\LighEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="GenericTypeList.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Origine.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ComponentSystem.h">
+      <Filter>Game\ComponentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="LightEngine.h">
+      <Filter>Game\LighEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="LightMeshComponent.h">
+      <Filter>Game\LighEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericTypeList.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

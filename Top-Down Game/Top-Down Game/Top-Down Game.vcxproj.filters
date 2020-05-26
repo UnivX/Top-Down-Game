@@ -26,6 +26,18 @@
     <Filter Include="Game\ComponentSystem\Components">
       <UniqueIdentifier>{b975d4c1-2ac0-4f9c-a108-ac9b20138e8a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameEngine">
+      <UniqueIdentifier>{d49dbe25-85ce-4226-a58d-ebb82b172b45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Camera">
+      <UniqueIdentifier>{9300f7a8-e311-4fba-ad85-2e2a01e86df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Window">
+      <UniqueIdentifier>{8a57c111-f9ae-4266-a15b-266488273c6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GUI">
+      <UniqueIdentifier>{f4e9feb4-2d02-4dba-8a6b-36308ceb32dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentSystem.cpp">
@@ -49,6 +61,15 @@
     <ClCompile Include="Origine.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="EntityEngine.cpp">
+      <Filter>Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine.cpp">
+      <Filter>Game\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalVariables.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentSystem.h">
@@ -68,6 +89,15 @@
     </ClInclude>
     <ClInclude Include="GenericTypeList.h">
       <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityEngine.h">
+      <Filter>Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.h">
+      <Filter>Game\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalVariables.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

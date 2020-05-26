@@ -3,7 +3,13 @@
 #define COMPONENT_SYSTEM_H
 #include <string>
 #include <vector>
+ /*
+ Descrizione:
+ definizioni delle classi che creano il component system, ogni entità ha un istanza di questa classe
+ essenzialmente è una lista di classi chiamate componenti a cui si può accedere in base al tipo(all tipo di classe derivata dalla classe base component)
+ se nella lista non è presente un istanza della classe selezionata ritornerà un nullptr
 
+ */
 
 //baseclass
 class Component

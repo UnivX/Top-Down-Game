@@ -2,13 +2,39 @@
 #include <iostream>
 #include "ComponentSystem.h"
 #include "GenericTypeList.h"
+#include "GlobalVariables.h"
+#include "GameEngine.h"
 
 /*
 TIPS:
 FOR RANDOM SPAWNS USE GenericTypeList
-jj
+-movere la camera e dare un feedback quando si elimina un nemico insieme a altri effetti
+-craere proiettili grossi, espolisioni grosse
+-effetti grossi
+-creare una specie di distruttibilità del nemico
+-giocare con la posizione della camera
+-far si che il gioctore si movi con fluidità e che sia responsivo come effetti visivi nei dash
+-far si che i power up passivi e attivi interagiscano tra di loro in modo indiretto
+-pensare ad un tipo di avanzamento che non modifichi la difficolta del gioco
+
+TODO:
+-finire il game engine e l'entity engine
+-commentare un po' il codice
 
 
+- Create Event system like signal and slot for static entities in the map, for mare interactivity
+- creare un event system per il motore di gioco in cui ogni entittà può richiamare o aggiungere un nuovo evento
+-creare una gui dinamica e fresh
+
+*/
+
+/*
+IMPORTANT: GLOBAL VARIABLES CONTAIN THE MAIN ENGINE ONJECT
+
+*/
+
+/*
+Ogni file di intestazione contiene una piccola descrizione di ciò che contiene
 */
 
 class MyComponent : public Component{
@@ -69,6 +95,8 @@ void CodeTesting(){
 
 int main()
 {
+	//inside there is the game engine
+	GameEngine* gameEnginePtr = gameEngine;
 
 	CodeTesting();
 

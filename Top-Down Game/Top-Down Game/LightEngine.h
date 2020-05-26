@@ -6,6 +6,19 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+/*
+Descrizione
+La LightMesh è una mesh che viene usata per calcolare le luci, è importante che la mesh coincidi il più possibile con lo sprite, la classe rappresenta un polygono e non una serie di lati non consecutivi
+nell costruttore bisogna inserire una lista che rappresentano i punti di un poligono
+
+La LightPoint è la rappresentazione di una luce che verra poi renderizata
+
+LightEngine: è la classe che gestisce tutte e due le classi al disopra sia per la memoria sia per il rendering
+
+NOTA:
+la classe light point pre-renderizza la texture(a partire della vertex shader) della luce immagazinandola in memoria
+*/
+
 struct Edge {
 	sf::Vector2f* p1, * p2;
 };

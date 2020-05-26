@@ -1,5 +1,5 @@
 #include "Entity.h"
-
+#include <assert.h>
 
 
 Entity::Entity()
@@ -9,6 +9,7 @@ Entity::Entity()
 	this->z = 0;
 	this->position = sf::Vector2f(0, 0);
 	this->m_local_list = nullptr;
+	this->suspended = false;
 }
 
 Entity::Entity(NewEntityFunctionPtr new_entity_ptr, LocalEntityList* local_list)
@@ -73,4 +74,27 @@ void Entity::Delete()
 bool Entity::IsDeleted()
 {
 	return this->deleted;
+}
+
+bool Entity::IsSuspended()
+{
+	return this->suspended;
+}
+
+void Entity::Suspend()
+{
+	this->suspended = true;
+}
+
+void Entity::Resume()
+{
+	this->suspended = false;
+}
+
+std::string Entity::GetName()
+{
+#ifdef _DEBUG
+	assert(this->m_name != "");
+#endif // _DEBUGG
+	return this->m_name;
 }

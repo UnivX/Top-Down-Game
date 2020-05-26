@@ -21,7 +21,10 @@
   <ItemGroup>
     <ClCompile Include="ComponentSystem.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityEngine.cpp" />
+    <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GenericTypeList.cpp" />
+    <ClCompile Include="GlobalVariables.cpp" />
     <ClCompile Include="LightEngine.cpp" />
     <ClCompile Include="LightMeshComponent.cpp" />
     <ClCompile Include="Origine.cpp" />
@@ -30,7 +33,10 @@
   <ItemGroup>
     <ClInclude Include="ComponentSystem.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityEngine.h" />
+    <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GenericTypeList.h" />
+    <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="LightEngine.h" />
     <ClInclude Include="LightMeshComponent.h" />
     <ClInclude Include="Utility.h" />

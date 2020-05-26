@@ -4,6 +4,14 @@
 #include <vector>
 
 
+/*
+Descrizione:
+è una lista di tipi, ovvero si possono elencare molte classi senza occupare memoria
+si può usare per uno spawn random, per esempio si possono creare liste di item in base alla rarità
+di cui verranno istanziata un oggetto tra uno dei tanti tipi nella lista
+
+*/
+
 //need empity constructor
 /*
 CODE EXAMPLE:

@@ -12,6 +12,7 @@
 *.ilk
 *.log
 *.tlog
+*.vs
 
 # Precompiled Headers
 *.gch

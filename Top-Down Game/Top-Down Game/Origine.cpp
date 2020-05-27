@@ -11,11 +11,13 @@ FOR RANDOM SPAWNS USE GenericTypeList
 -movere la camera e dare un feedback quando si elimina un nemico insieme a altri effetti
 -craere proiettili grossi, espolisioni grosse
 -effetti grossi
+-non muovere troppo la camera
 -creare una specie di distruttibilità del nemico
 -giocare con la posizione della camera
 -far si che il gioctore si movi con fluidità e che sia responsivo come effetti visivi nei dash
 -far si che i power up passivi e attivi interagiscano tra di loro in modo indiretto
 -pensare ad un tipo di avanzamento che non modifichi la difficolta del gioco
+-il dash è solo un aumento repentino della velocità, non un movimento statico
 
 TODO:
 -finire il game engine e l'entity engine

@@ -70,6 +70,9 @@
     <ClCompile Include="GlobalVariables.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Game\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentSystem.h">
@@ -98,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="GlobalVariables.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Game\Camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

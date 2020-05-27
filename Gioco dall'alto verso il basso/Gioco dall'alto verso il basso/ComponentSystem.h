@@ -5,9 +5,13 @@
 #include <vector>
  /*
  Descrizione:
- definizioni delle classi che creano il component system, ogni entit‡ ha un istanza di questa classe
- essenzialmente Ë una lista di classi chiamate componenti a cui si puÚ accedere in base al tipo(all tipo di classe derivata dalla classe base component)
- se nella lista non Ë presente un istanza della classe selezionata ritorner‡ un nullptr
+ definizioni delle classi che creano il component system, ogni entit√† ha un istanza di questa classe
+ essenzialmente √® una lista di oggetti chiamate componenti a cui si pu√≤ accedere in base al tipo(all tipo di classe derivata dalla classe base component)
+ se nella lista non √® presente un istanza della classe selezionata ritorner√† un nullptr
+Esmpio:
+ComponentSystem cs;
+cs.components.push_back(new LightMeshComponent());
+LightMeshComponent* component = cs.GetComponent<LightMeshComponent>();
 
  */
 

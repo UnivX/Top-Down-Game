@@ -29,6 +29,7 @@
     <ClCompile Include="LightEngine.cpp" />
     <ClCompile Include="LightMeshComponent.cpp" />
     <ClCompile Include="Origine.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +42,7 @@
     <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="LightEngine.h" />
     <ClInclude Include="LightMeshComponent.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

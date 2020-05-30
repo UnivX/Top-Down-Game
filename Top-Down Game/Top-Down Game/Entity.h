@@ -30,7 +30,7 @@ class Entity;
 
 typedef void(*NewEntityFunctionPtr)(std::shared_ptr<Entity>);
 typedef std::vector<std::weak_ptr<Entity>> LocalEntityList;
-typedef std::vector<std::weak_ptr<Entity>> GlobalEntityList;
+typedef std::vector<std::shared_ptr<Entity>> GlobalEntityList;
 
 class Entity
 {

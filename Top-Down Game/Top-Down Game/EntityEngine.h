@@ -18,7 +18,6 @@ per semplicità le entità sono divisi in chunk in modo da suddividere le aree di 
 
 */
 
-class Chunk;
 
 class EntityEngine
 {
@@ -28,35 +27,11 @@ public:
 	virtual void Update(float dt);
 	virtual void Draw(sf::RenderTarget& target);
 
-	virtual void DeleteChunk(std::shared_ptr<Chunk> chunk);
-	virtual void AddChunk(std::shared_ptr<Chunk> chunk);
-	std::vector<std::shared_ptr<Chunk>>* GetChunkList();
-
 	virtual void AddEntity(std::shared_ptr<Entity> entity);
-
+	GlobalEntityList* GetEntityList();
 protected:
 	GlobalEntityList entities;
-	std::vector<std::shared_ptr<Chunk>> chunks;
 };
 
-class Chunk {
-public:
-	Chunk(EntityEngine* engine);
-	virtual ~Chunk();
-
-	virtual void AddExistingEntity(std::weak_ptr<Entity> entity);
-	virtual void NewEntity(std::shared_ptr<Entity> entity);
-	virtual void RemoveEntity(std::weak_ptr<Entity> entityRawPtr);
-
-	virtual void DeleteChunk();
-	virtual void Suspend();
-	virtual void Resume();
-
-	LocalEntityList* getEntity
-protected:
-	bool suspended;
-	LocalEntityList entities;
-	EntityEngine* main_entity_engine;
-};
 
 #endif // !ENTITY_ENGINE_H

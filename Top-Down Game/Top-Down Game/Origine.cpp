@@ -97,27 +97,14 @@ void CodeTesting(){
 
 int main()
 {
-	//inside there is the game engine
-	GameEngine* gameEnginePtr = gameEngine;
-
+	//game engine is an global varbiale declared in GlobalVaribles.h
 	CodeTesting();
 
 	sf::RenderWindow window(sf::VideoMode(200, 200), "OMG IT WORKS!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	gameEngine->SetWindow(window);
+	gameEngine->StartGameLoop();
 
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		window.clear();
-		window.draw(shape);
-		window.display();
-	}
-
+	
+	delete gameEngine;
 	return 0;
 }

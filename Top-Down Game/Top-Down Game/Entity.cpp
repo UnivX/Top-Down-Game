@@ -5,29 +5,26 @@
 Entity::Entity()
 {
 	this->deleted = false;
-	this->m_new_entity_ptr = nullptr;
 	this->z = 0;
 	this->position = sf::Vector2f(0, 0);
-	this->m_local_list = nullptr;
+	this->m_entity_engine = nullptr;
 	this->suspended = false;
 }
 
-Entity::Entity(NewEntityFunctionPtr new_entity_ptr, LocalEntityList* local_list)
+Entity::Entity(EntityEngine* entity_engine)
 {
-	this->m_local_list = local_list;
-	this->m_new_entity_ptr = new_entity_ptr;
+	this->deleted = false;
+	this->z = 0;
+	this->position = sf::Vector2f(0, 0);
+	this->m_entity_engine = entity_engine;
+	this->suspended = false;
 }
 
-
-void Entity::SetNewEntityPtr(NewEntityFunctionPtr new_entity_ptr)
+void Entity::SetEntityEngine(EntityEngine* entity_engine)
 {
-	this->m_new_entity_ptr = new_entity_ptr;
+	this->m_entity_engine = entity_engine;
 }
 
-void Entity::SetLocalEntityList(LocalEntityList* local_list)
-{
-	this->m_local_list = local_list;
-}
 
 Entity::~Entity()
 {
@@ -35,6 +32,11 @@ Entity::~Entity()
 
 void Entity::Update(float deltaTime)
 {
+}
+
+void Entity::UpdateZ()
+{
+	this->z = this->position.x;
 }
 
 void Entity::Draw(sf::RenderTarget& target)

@@ -7,7 +7,7 @@ Camera::Camera()
 	this->followed_entity;
 	this->m_trauma = 0;
 	this->trauma_reducing = 0.1;
-	this->m_camera_smoothness = 2;
+	this->m_camera_smoothness = 0.1;
 	this->maxAngleShaking = 2;
 	this->maxOffSetShaking = 2;
 	this->m_angle = 0;
@@ -46,7 +46,7 @@ void Camera::Update(float dt)
 
 void Camera::SetViewToTarget(sf::RenderTarget& target)
 {
-	this->view.setViewport(target.getDefaultView().getViewport());
+	this->view.setSize(sf::Vector2f(target.getSize()));
 	target.setView(this->view);
 }
 
@@ -136,7 +136,7 @@ ShakingData Camera::ComputeCameraShake(float dt)
 	sf::Vector2f finalVector(0, 0);
 	float finalRotation = 0;
 
-	float shake = pow(shake, 2);//get shake value, is pow of 2 for more nice effect, it can be also of 3
+	float shake = pow(this->m_trauma, 2);//get shake value, is pow of 2 for more nice effect, it can be also of 3
 
 	//formula to get shaking effect = MaxOffset * dhake * random_number
 

@@ -26,19 +26,15 @@ per risolvere le dipendenze
 
 */
 
-class Entity;
+class EntityEngine;
 
-typedef void(*NewEntityFunctionPtr)(std::shared_ptr<Entity>);
-typedef std::vector<std::weak_ptr<Entity>> LocalEntityList;
-typedef std::vector<std::shared_ptr<Entity>> GlobalEntityList;
 
 class Entity
 {
 public:
 	Entity();
-	Entity(NewEntityFunctionPtr new_entity_ptr, LocalEntityList* local_list);
-	void SetNewEntityPtr(NewEntityFunctionPtr new_entity_ptr);
-	void SetLocalEntityList(LocalEntityList* local_list);
+	Entity(EntityEngine *entity_engine);
+	void SetEntityEngine(EntityEngine* entity_engine);
 	virtual ~Entity();
 	virtual void Update(float deltaTime);
 	virtual void Draw(sf::RenderTarget& target);
@@ -58,13 +54,17 @@ public:
 
 	std::string GetName();
 protected:
+	virtual void UpdateZ();
+
 	ComponentSystem m_components;
 	bool deleted;
 	bool suspended;
 	float z;			//depth
 	std::string m_name;
 	sf::Vector2f position;
-	NewEntityFunctionPtr m_new_entity_ptr;
-	LocalEntityList* m_local_list;
+	EntityEngine* m_entity_engine;
 };
+
+typedef std::vector<std::shared_ptr<Entity>> GlobalEntityList;
+
 #endif // !ENTITY_H

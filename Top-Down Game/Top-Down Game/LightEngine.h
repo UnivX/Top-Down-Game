@@ -13,7 +13,7 @@ nell costruttore bisogna inserire una lista che rappresentano i punti di un poli
 
 La LightPoint è la rappresentazione di una luce che verra poi renderizata
 
-LightEngine: è la classe che gestisce tutte e due le classi al disopra sia per la memoria sia per il rendering
+LightEngine: è la classe che gestisce tutte e due le classi al di sopra sia per la memoria sia per il rendering, la classe gestisce anche la view del target, per sapere la poszione
 
 NOTA:
 la classe light point pre-renderizza la texture(a partire della vertex shader) della luce immagazinandola in memoria
@@ -77,7 +77,7 @@ public:
 	void AddLight(LightPoint* light);
 	void RemoveLight(LightPoint* light);
 	void RemoveMesh(LightMesh* Mesh);
-	void Draw(sf::RenderTarget& target, sf::RenderStates states);
+	void Draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default);
 	void DrawDebugInfo(sf::RenderTarget& target);
 private:
 	sf::Shader lightShader;

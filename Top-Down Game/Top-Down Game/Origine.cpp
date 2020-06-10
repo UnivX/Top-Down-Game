@@ -20,10 +20,8 @@ FOR RANDOM SPAWNS USE GenericTypeList
 -il dash è solo un aumento repentino della velocità, non un movimento statico
 
 TODO:
--finire il game engine e l'entity engine
--commentare un po' il codice
-
-
+- debugare il modulo collision
+-creare un rigidbody
 - Create Event system like signal and slot for static entities in the map, for mare interactivity
 - creare un event system per il motore di gioco in cui ogni entittà può richiamare o aggiungere un nuovo evento
 -creare una gui dinamica e fresh
@@ -97,6 +95,7 @@ void CodeTesting(){
 
 int main()
 {
+	global_textures.LoadData();
 	//game engine is an global varbiale declared in GlobalVaribles.h
 	CodeTesting();
 

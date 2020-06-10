@@ -36,7 +36,7 @@ void Entity::Update(float deltaTime)
 
 void Entity::UpdateZ()
 {
-	this->z = this->position.x;
+	this->z = this->position.y;
 }
 
 void Entity::Draw(sf::RenderTarget& target)

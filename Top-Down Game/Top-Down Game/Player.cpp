@@ -4,10 +4,9 @@
 
 Player::Player()
 {
-	this->m_rectangle = sf::RectangleShape(sf::Vector2f(50, 50));
-	this->m_rectangle.setFillColor(sf::Color::Green);
+	sprite = sf::Sprite(global_textures.player_texture, sf::IntRect(0, 0, 128, 128));
 	this->m_name = "Player";
-	this->velocity = 100;
+	this->velocity = 300;
 }
 
 
@@ -18,7 +17,7 @@ Player::~Player()
 void Player::Update(float deltaTime)
 {
 	std::cout << "position: " << this->position.x << ", " << this->position.y << std::endl;
-	this->m_rectangle.setPosition(this->position);
+	this->sprite.setPosition(this->position);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		this->position.x -= velocity * deltaTime;
@@ -37,6 +36,11 @@ void Player::Update(float deltaTime)
 
 void Player::Draw(sf::RenderTarget& target)
 {
-	target.draw(this->m_rectangle);
+	target.draw(this->sprite);
 
+}
+
+void Player::UpdateZ()
+{
+	this->z = this->position.y + 128;
 }

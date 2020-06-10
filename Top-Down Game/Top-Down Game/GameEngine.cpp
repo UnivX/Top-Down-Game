@@ -1,5 +1,6 @@
 #include "GameEngine.h"
 #include "Player.h"
+#include "Wall.h"
 
 
 GameEngine::GameEngine()
@@ -8,6 +9,13 @@ GameEngine::GameEngine()
 	std::shared_ptr<Entity> player = std::make_shared<Player>();
 	this->m_entity_engine.AddEntity(player);
 	this->m_camera.SetEntityToFollow(player);
+
+	for (int i = 0; i < 10; i++) {
+		std::shared_ptr<Wall> wall = std::make_shared<Wall>();
+		wall->SetSize(sf::Vector2f(100, 100));
+		wall->SetPosition(sf::Vector2f(i * 100, 0));
+		this->m_entity_engine.AddEntity(wall);
+	}
 }
 
 
@@ -59,6 +67,8 @@ void GameEngine::EventUpdate()
 	{
 		if (event.type == sf::Event::Closed)
 			this->window->close();
+		if (event.type == sf::Event::MouseButtonReleased)
+			this->m_camera.AddCameraShake(1);
 	}
 }
 

@@ -6,7 +6,7 @@ Camera::Camera()
 {
 	this->followed_entity;
 	this->m_trauma = 0;
-	this->trauma_reducing = 0.1;
+	this->trauma_reducing = 0.9;
 	this->m_camera_smoothness = 0.1;
 	this->maxAngleShaking = 2;
 	this->maxOffSetShaking = 2;
@@ -37,7 +37,7 @@ void Camera::Update(float dt)
 		this->m_pos += smoothDistance * dt;
 	}
 
-	this->view.setCenter(this->m_pos + this->m_camera_position_offset + shake.transitional);
+	this->view.setCenter(this->m_pos + this->m_camera_position_offset + (shake.transitional *1.65f));
 	this->view.setRotation(this->m_angle + shake.rotational);
 
 	//get direction be
@@ -46,7 +46,9 @@ void Camera::Update(float dt)
 
 void Camera::SetViewToTarget(sf::RenderTarget& target)
 {
+	
 	this->view.setSize(sf::Vector2f(target.getSize()));
+	this->view.zoom(2);
 	target.setView(this->view);
 }
 
@@ -153,7 +155,11 @@ ShakingData Camera::ComputeCameraShake(float dt)
 	finalVector.y = this->maxOffSetShaking * shake * randomNumber;
 
 	//reduce camera trauma in time
-	this->m_trauma = dt * this->trauma_reducing;
+	if(this->m_trauma > 0)
+	this->m_trauma -= dt * this->trauma_reducing;
+
+	if (this->m_trauma < 0)
+		this->m_trauma = 0;
 
 	return ShakingData{ finalVector, finalRotation };
 }

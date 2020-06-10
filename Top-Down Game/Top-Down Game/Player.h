@@ -10,9 +10,10 @@ public:
 	~Player();
 	void Update(float deltaTime) override;
 	void Draw(sf::RenderTarget& target) override;
+	void UpdateZ() override;
 private:
 	float velocity;
-	sf::RectangleShape m_rectangle;
+	sf::Sprite sprite;
 };
 
 #endif // !PLAYER_H

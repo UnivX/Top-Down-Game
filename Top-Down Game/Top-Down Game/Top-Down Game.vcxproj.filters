@@ -14,12 +14,6 @@
     <Filter Include="Game">
       <UniqueIdentifier>{b41b0696-c444-4164-b6bd-80746646d5b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\LighEngine">
-      <UniqueIdentifier>{f2b29deb-eeab-4f3a-9d26-3778c3fcea0d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entities">
-      <UniqueIdentifier>{a593b9fc-cb53-4413-a9f3-7ce801f28976}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\ComponentSystem">
       <UniqueIdentifier>{59b2ab1e-e1f7-4ea4-9558-7b0a6a24d1b9}</UniqueIdentifier>
     </Filter>
@@ -29,14 +23,26 @@
     <Filter Include="Game\GameEngine">
       <UniqueIdentifier>{d49dbe25-85ce-4226-a58d-ebb82b172b45}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Camera">
+    <Filter Include="Game\EntityThings">
+      <UniqueIdentifier>{a593b9fc-cb53-4413-a9f3-7ce801f28976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\EntityThings\Entities">
+      <UniqueIdentifier>{286e7d5c-592a-4654-bd5e-17d54ce9bf17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Graphics">
+      <UniqueIdentifier>{65ee1d1e-6687-40d9-8b12-d9869ff70225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Graphics\LighEngine">
+      <UniqueIdentifier>{f2b29deb-eeab-4f3a-9d26-3778c3fcea0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Graphics\GUI">
+      <UniqueIdentifier>{f4e9feb4-2d02-4dba-8a6b-36308ceb32dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Graphics\Camera">
       <UniqueIdentifier>{9300f7a8-e311-4fba-ad85-2e2a01e86df4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Window">
-      <UniqueIdentifier>{8a57c111-f9ae-4266-a15b-266488273c6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\GUI">
-      <UniqueIdentifier>{f4e9feb4-2d02-4dba-8a6b-36308ceb32dd}</UniqueIdentifier>
+    <Filter Include="Game\PhysicEngine">
+      <UniqueIdentifier>{216162e7-d4cf-42f4-960e-d48207191604}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -44,13 +50,13 @@
       <Filter>Game\ComponentSystem</Filter>
     </ClCompile>
     <ClCompile Include="LightEngine.cpp">
-      <Filter>Game\LighEngine</Filter>
+      <Filter>Game\Graphics\LighEngine</Filter>
     </ClCompile>
     <ClCompile Include="LightMeshComponent.cpp">
-      <Filter>Game\LighEngine</Filter>
+      <Filter>Game\Graphics\LighEngine</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Game\Entities</Filter>
+      <Filter>Game\EntityThings</Filter>
     </ClCompile>
     <ClCompile Include="Utility.cpp">
       <Filter>Utilities</Filter>
@@ -62,31 +68,43 @@
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="EntityEngine.cpp">
-      <Filter>Game\Entities</Filter>
+      <Filter>Game\EntityThings</Filter>
     </ClCompile>
     <ClCompile Include="GameEngine.cpp">
       <Filter>Game\GameEngine</Filter>
     </ClCompile>
-    <ClCompile Include="GlobalVariables.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Game\Camera</Filter>
+      <Filter>Game\Graphics\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Player.cpp">
+      <Filter>Game\EntityThings\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalVariables.cpp" />
+    <ClCompile Include="Wall.cpp">
+      <Filter>Game\EntityThings\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionEngine.cpp">
+      <Filter>Game\PhysicEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiThreading.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBody.cpp">
+      <Filter>Game\PhysicEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentSystem.h">
       <Filter>Game\ComponentSystem</Filter>
     </ClInclude>
     <ClInclude Include="LightEngine.h">
-      <Filter>Game\LighEngine</Filter>
+      <Filter>Game\Graphics\LighEngine</Filter>
     </ClInclude>
     <ClInclude Include="LightMeshComponent.h">
-      <Filter>Game\LighEngine</Filter>
+      <Filter>Game\Graphics\LighEngine</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Game\Entities</Filter>
+      <Filter>Game\EntityThings</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Utilities</Filter>
@@ -95,17 +113,29 @@
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="EntityEngine.h">
-      <Filter>Game\Entities</Filter>
+      <Filter>Game\EntityThings</Filter>
     </ClInclude>
     <ClInclude Include="GameEngine.h">
       <Filter>Game\GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalVariables.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Game\Camera</Filter>
+      <Filter>Game\Graphics\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="Player.h">
+      <Filter>Game\EntityThings\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalVariables.h" />
+    <ClInclude Include="Wall.h">
+      <Filter>Game\EntityThings\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionEngine.h">
+      <Filter>Game\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiThreading.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBody.h">
+      <Filter>Game\PhysicEngine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

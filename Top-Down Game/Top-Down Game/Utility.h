@@ -20,4 +20,12 @@ sf::Vector2f Normalize(const sf::Vector2f& source);
 
 sf::Vector2f rotate_point(sf::Vector2f center, sf::Vector2f point, float radians);
 
+float LenghtVector(const sf::Vector2f& vect1);
+
+float dotProduct(const sf::Vector2f& vec1, const sf::Vector2f& vec2);
+
+sf::Vector2f rotateVector90(const sf::Vector2f& vec);
+
+sf::Vector2f DegreeToVector(float floatDegree);
+
 #endif // !UTILITY_H

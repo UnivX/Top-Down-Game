@@ -43,3 +43,29 @@ sf::Vector2f rotate_point(sf::Vector2f center, sf::Vector2f point, float radians
 	point.y = ynew + center.y;
 	return point;
 }
+
+float dotProduct(const sf::Vector2f& vec1, const sf::Vector2f& vec2)
+{
+	return vec1.x* vec2.x + vec1.y * vec2.y;
+}
+
+sf::Vector2f rotateVector90(const sf::Vector2f& vec)
+{
+	sf::Vector2f aVec = vec;
+	sf::Vector2f NVec;
+	NVec.x = aVec.x * 0 - aVec.y * 1;
+	NVec.y = aVec.x * 1 + aVec.y * 0;
+
+	return NVec;
+}
+
+float LenghtVector(const sf::Vector2f& vect1)
+{
+	return sqrt(pow(vect1.x, 2) + pow(vect1.y, 2));
+}
+
+sf::Vector2f DegreeToVector(float floatDegree)
+{
+	float radians = (floatDegree) * (PI / 180.0);
+	return sf::Vector2f(cos(radians), sin(radians));
+}

@@ -23,14 +23,18 @@ struct Edge {
 	sf::Vector2f* p1, * p2;
 };
 
-typedef sf::Rect<float> AABB;
+typedef sf::Rect<float> Box;
 
 class LightMesh {
 public:
 	LightMesh(std::vector<sf::Vector2f> points);
 	void Render(sf::RenderTarget& target);
 	void SetRadians(float radians);
-	AABB GetCollider();
+	Box GetCollider() {
+		this->boxCollider.left = this->position.x;
+		this->boxCollider.top = this->position.y;
+		return this->boxCollider;
+	}
 
 	sf::Vector2f position;
 	std::vector<Edge> edges;
@@ -38,7 +42,7 @@ public:
 	float radians;
 	sf::Vector2f center;
 private:
-	AABB boxCollider;
+	Box boxCollider;
 };
 
 class LightPoint {
@@ -54,7 +58,7 @@ public:
 	void RenderLight();
 	void RenderShadow(LightMesh& Mesh);
 	void Draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default);
-	AABB GetCollider();
+	Box GetCollider();
 	sf::Color color;
 	sf::Vector2f pos;
 	float radius;
@@ -64,7 +68,7 @@ private:
 	sf::CircleShape circle;
 	sf::RenderTexture* lightTexture;
 	sf::Shader* m_shader;
-	AABB boxCollider;
+	Box boxCollider;
 	sf::Texture lightCircleTexture;
 	int8_t shadow_darkness;
 };

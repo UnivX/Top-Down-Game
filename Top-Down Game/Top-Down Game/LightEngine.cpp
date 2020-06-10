@@ -57,12 +57,6 @@ void LightMesh::SetRadians(float radians)
 	this->radians = radians;
 }
 
-AABB LightMesh::GetCollider() {
-	this->boxCollider.left = this->position.x;
-	this->boxCollider.top = this->position.y;
-	return this->boxCollider;
-}
-
 LightPoint::LightPoint(sf::Color color, sf::Vector2f position, float radius, int8_t shadow_darkness) {
 	this->shadow_darkness = shadow_darkness;
 	this->color = color;
@@ -74,7 +68,7 @@ LightPoint::LightPoint(sf::Color color, sf::Vector2f position, float radius, int
 	this->lightTexture->setSmooth(true);
 	this->circle.setPosition(sf::Vector2f(0, 0));
 	this->m_shader = nullptr;
-	this->boxCollider = AABB(this->pos, sf::Vector2f(this->radius * 2, this->radius * 2));
+	this->boxCollider = Box(this->pos, sf::Vector2f(this->radius * 2, this->radius * 2));
 	spriteCreated = false;
 }
 LightPoint::LightPoint() {
@@ -88,7 +82,7 @@ LightPoint::LightPoint() {
 	this->lightTexture->setSmooth(true);
 	this->circle.setPosition(sf::Vector2f(0, 0));
 	this->m_shader = nullptr;
-	this->boxCollider = AABB(this->pos, sf::Vector2f(this->radius * 2, this->radius * 2));
+	this->boxCollider = Box(this->pos, sf::Vector2f(this->radius * 2, this->radius * 2));
 	spriteCreated = false;
 }
 
@@ -183,7 +177,7 @@ void LightPoint::Draw(sf::RenderTarget& target, sf::RenderStates states) {
 	this->lightTexture->clear(sf::Color::Transparent);
 }
 
-AABB LightPoint::GetCollider()
+Box LightPoint::GetCollider()
 {
 	this->boxCollider.left = this->pos.x - this->radius;
 	this->boxCollider.top = this->pos.y - this->radius;
@@ -231,7 +225,7 @@ void LightEngine::RemoveMesh(LightMesh* Mesh) {
 void LightEngine::Draw(sf::RenderTarget & target, sf::RenderStates states) {
 	sf::Vector2f viewCenter(target.getView().getCenter());
 	sf::Vector2f viewSize(target.getView().getSize());
-	AABB currentViewRect(viewCenter - viewSize / 2.f, viewSize);
+	Box currentViewRect(viewCenter - viewSize / 2.f, viewSize);
 
 	sf::Vector2f size = target.getView().getSize();
 
@@ -266,7 +260,7 @@ void LightEngine::DrawDebugInfo(sf::RenderTarget & target)
 	//draw all the light's boxes
 	sf::RectangleShape rect;
 	for (int i = 0; i < this->entities.size(); i++) {
-		AABB collider = this->entities[i]->GetCollider();
+		Box collider = this->entities[i]->GetCollider();
 		rect.setPosition(sf::Vector2f(collider.left, collider.top));
 		rect.setSize(sf::Vector2f(collider.width, collider.width));
 		rect.setFillColor(sf::Color::Transparent);
@@ -277,7 +271,7 @@ void LightEngine::DrawDebugInfo(sf::RenderTarget & target)
 
 	//draw all the Mesh's boxes
 	for (int i = 0; i < this->lights.size(); i++) {
-		AABB collider = this->lights[i]->GetCollider();
+		Box collider = this->lights[i]->GetCollider();
 		rect.setPosition(sf::Vector2f(collider.left, collider.top));
 		rect.setSize(sf::Vector2f(collider.width, collider.width));
 		rect.setFillColor(sf::Color::Transparent);

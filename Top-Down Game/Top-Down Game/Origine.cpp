@@ -20,8 +20,12 @@ FOR RANDOM SPAWNS USE GenericTypeList
 -il dash è solo un aumento repentino della velocità, non un movimento statico
 
 TODO:
-- debugare il modulo collision
+
 -creare un rigidbody
+-aggiungere al rigidbody il calcolo della massa
+- creare il physic engine con il risolutore delle collisioni
+- debbugare rigidbody
+- debugare il modulo collision
 - Create Event system like signal and slot for static entities in the map, for mare interactivity
 - creare un event system per il motore di gioco in cui ogni entittà può richiamare o aggiungere un nuovo evento
 -creare una gui dinamica e fresh

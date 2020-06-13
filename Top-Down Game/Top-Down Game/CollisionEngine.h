@@ -84,6 +84,12 @@ public:
 	bool collide;
 };
 
+struct CollideInformation {
+	sf::Vector2f translationSolution;
+	sf::Vector2f accelerationSolution;
+	Entity* collidingEntity;
+};
+
 class Collider {
 public:
 	Collider();
@@ -91,11 +97,17 @@ public:
 	void GenerateFromSATMesh(std::vector<sf::Vector2f> points);
 	void UpdatePositions();
 
+	bool isPhysic;
+
 	AABB aabb;
 	SatCollisionMesh m_sat_mesh;
 
 	bool isAABB;
 	sf::Vector2f pos;
+
+	sf::Vector2f centroid;
+
+	void (*OnColliodePtr)(CollideInformation&); // function ptr to custom on collide
 };
 
 #endif //!COLLISION_ENGINE_H

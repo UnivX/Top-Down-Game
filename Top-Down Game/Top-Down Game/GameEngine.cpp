@@ -40,6 +40,7 @@ void GameEngine::StartGameLoop()
 	{
 		this->EventUpdate();
 		float dt = clock.restart().asSeconds();
+		std::cout << 1 / dt << std::endl;
 		this->Update(dt);
 		this->Draw(dt);
 	}

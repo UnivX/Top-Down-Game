@@ -299,6 +299,7 @@ Collider::Collider()
 {
 	this->isAABB = false;
 	this->pos = sf::Vector2f(0, 0);
+	this->centroid = sf::Vector2f(0, 0);
 }
 
 void Collider::GenerateFromAABB(sf::Vector2f size)
@@ -307,19 +308,28 @@ void Collider::GenerateFromAABB(sf::Vector2f size)
 	this->aabb.SetSize(size);
 	this->aabb.SetPosition(sf::Vector2f(0, 0));
 	this->m_sat_mesh = SatCollisionMesh(std::vector<sf::Vector2f>{sf::Vector2f(0, 0), sf::Vector2f(size.x, 0), size, sf::Vector2f(0, size.y) });
+	this->centroid = size / 2.f;
 }
 
 void Collider::GenerateFromSATMesh(std::vector<sf::Vector2f> points)
 {
 	this->isAABB = false;
 	sf::Vector2f size(0, 0);
+
+	this->centroid = sf::Vector2f(0, 0);
+
 	for (int i = 0; i < points.size(); i++) {
 		if (points[i].x > size.x)
 			size.x = points[i].x;
 
 		if (points[i].y > size.y)
 			size.y = points[i].y;
+		centroid += points[i];
 	}
+
+	centroid /= float(points.size());
+
+	this->m_sat_mesh.CreateFromPoints(points);
 }
 
 void Collider::UpdatePositions()

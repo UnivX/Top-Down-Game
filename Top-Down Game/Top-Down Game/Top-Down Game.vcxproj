@@ -53,6 +53,9 @@
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Documentazione Physic.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{6c054fe3-c4ef-416a-82ef-069dbd0034a4}</ProjectGuid>

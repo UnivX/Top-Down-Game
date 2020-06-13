@@ -138,4 +138,9 @@
       <Filter>Game\PhysicEngine</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Documentazione Physic.txt">
+      <Filter>Game\PhysicEngine</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

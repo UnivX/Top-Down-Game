@@ -16,7 +16,7 @@ Player::~Player()
 
 void Player::Update(float deltaTime)
 {
-	std::cout << "position: " << this->position.x << ", " << this->position.y << std::endl;
+	//std::cout << "position: " << this->position.x << ", " << this->position.y << std::endl;
 	this->sprite.setPosition(this->position);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))

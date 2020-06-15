@@ -38,9 +38,9 @@ void PhysicEngine::Update(float dt)
 
 						//if is physic
 						if (component1->GetRigidBody() != nullptr && component1->GetRigidBody() != nullptr && collider1->IsPhysic() && collider2->IsPhysic()) {
-							sf::Vector2f deltaAcc = (component2->GetRigidBody()->GetAcceleration() - component1->GetRigidBody()->GetAcceleration());
+							sf::Vector2f deltaAcc = (component2->GetRigidBody()->GetAcceleration() - component1->GetRigidBody()->GetAcceleration()) / 2.f;
 							component1->GetRigidBody()->OnCollision(hits.first, hits.first.normal * dotProduct(hits.first.normal, deltaAcc), component2->GetRigidBody()->GetMass());
-							component2->GetRigidBody()->OnCollision(hits.second, hits.second.normal * dotProduct(hits.second.normal, deltaAcc), component1->GetRigidBody()->GetMass());
+							component2->GetRigidBody()->OnCollision(hits.second, hits.second.normal * dotProduct(hits.second.normal, -deltaAcc), component1->GetRigidBody()->GetMass());
 						}
 					}
 				}

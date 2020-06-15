@@ -1,5 +1,6 @@
 #include "RigidBody.h"
-
+#include "Utility.h"
+#include <iostream>
 
 
 RigidBody::RigidBody()
@@ -22,10 +23,10 @@ void RigidBody::OnCollision(Hit& data, sf::Vector2f accelerationSolution, float 
 	if (this->isStatic)
 		return;
 	if(otherMass == INFINITY) //if other is static
-		this->acceleration += accelerationSolution * 2.f;
+		this->acceleration = dotProduct(this->acceleration, rotateVector90(data.normal))  * rotateVector90(data.normal);
 	else
 		this->acceleration += accelerationSolution;
-	this->position += data.normal * data.overlap;
+	this->position += data.normal * data.overlap / 2.f;
 }
 
 void RigidBody::Update(float dt)

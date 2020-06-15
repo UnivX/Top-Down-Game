@@ -2,6 +2,7 @@
 #ifndef GAME_ENGINE_H
 #define GAME_ENGINE_H
 #include "EntityEngine.h"
+#include "PhysicEngine.h"
 #include "GlobalVariables.h"
 #include "Camera.h"
 /*
@@ -25,6 +26,7 @@ private:
 	void Update(float dt);
 	void EventUpdate();
 
+	PhysicEngine m_physic_engine;
 	EntityEngine m_entity_engine;
 	LightEngine m_light_engine;
 	Camera m_camera;

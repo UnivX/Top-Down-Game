@@ -3,7 +3,7 @@
 #include "Wall.h"
 
 
-GameEngine::GameEngine()
+GameEngine::GameEngine() : m_physic_engine(&this->m_entity_engine)
 {
 	this->window = nullptr;
 	std::shared_ptr<Entity> player = std::make_shared<Player>();
@@ -67,6 +67,7 @@ void GameEngine::Draw(float dt)
 
 void GameEngine::Update(float dt)
 {
+	this->m_physic_engine.Update(dt);
 	this->m_entity_engine.Update(dt);
 }
 

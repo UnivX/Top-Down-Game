@@ -21,9 +21,7 @@ FOR RANDOM SPAWNS USE GenericTypeList
 
 TODO:
 
--aggiungere al rigidbody il calcolo della massa
-- creare il physic engine con il risolutore delle collisioni
-- debbugare rigidbody
+- fixare bug aabb
 - debugare il modulo collision
 - Create Event system like signal and slot for static entities in the map, for more interactivity
 - creare un event system per il motore di gioco in cui ogni entittà può richiamare o aggiungere un nuovo evento

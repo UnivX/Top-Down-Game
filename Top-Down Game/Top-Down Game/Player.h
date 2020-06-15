@@ -2,6 +2,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Entity.h"
+#include "PhysicComponent.h"
+
 
 class Player : public Entity
 {
@@ -14,6 +16,7 @@ public:
 private:
 	float velocity;
 	sf::Sprite sprite;
+	PhysicComponent *m_physic_component;
 };
 
 #endif // !PLAYER_H

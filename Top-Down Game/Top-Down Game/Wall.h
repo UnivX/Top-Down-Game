@@ -2,6 +2,7 @@
 #ifndef WALL_H
 #define WALL_H
 #include "Entity.h"
+#include "PhysicComponent.h"
 
 class Wall : public Entity
 {
@@ -16,6 +17,7 @@ public:
 private:
 	sf::RectangleShape m_rectangle;
 	sf::Vector2f m_size;
+	PhysicComponent* m_physic_component;
 };
 
 #endif // !WALL_H

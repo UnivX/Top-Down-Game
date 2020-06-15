@@ -6,7 +6,19 @@ Player::Player()
 {
 	sprite = sf::Sprite(global_textures.player_texture, sf::IntRect(0, 0, 128, 128));
 	this->m_name = "Player";
-	this->velocity = 300;
+	this->velocity = 800;
+	this->m_physic_component = new PhysicComponent();
+	this->m_physic_component->CreateNewRigidBody();
+	this->m_physic_component->GetRigidBody()->SetDynamic();
+	this->m_physic_component->GetRigidBody()->SetMass(1);
+	this->m_physic_component->GetRigidBody()->SetFriction(150);
+
+	Collider collider;
+	collider.GenerateAABBCollider(sf::Vector2f(128, 128));
+	collider.SetIsPhysic(true);
+
+	this->m_physic_component->AddNewCollider(collider);
+	this->m_components.components.push_back(this->m_physic_component);
 }
 
 
@@ -20,16 +32,20 @@ void Player::Update(float deltaTime)
 	this->sprite.setPosition(this->position);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		this->position.x -= velocity * deltaTime;
+		this->m_physic_component->GetRigidBody()->AddAcceleration(sf::Vector2f(-velocity * deltaTime, 0));
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		this->position.x += velocity * deltaTime;
+		this->m_physic_component->GetRigidBody()->AddAcceleration(sf::Vector2f(velocity * deltaTime, 0));
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		this->position.y -= velocity * deltaTime;
+		this->m_physic_component->GetRigidBody()->AddAcceleration(sf::Vector2f(0, -velocity * deltaTime));
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		this->position.y += velocity * deltaTime;
+		this->m_physic_component->GetRigidBody()->AddAcceleration(sf::Vector2f(0, velocity * deltaTime));
+
+	this->m_physic_component->GetRigidBody()->Update(deltaTime);
+	this->position = this->m_physic_component->GetRigidBody()->GetPosition();
+	this->m_physic_component->getColliders()[0][0].SetPosition(this->position);
 
 	this->UpdateZ();
 }
@@ -37,7 +53,12 @@ void Player::Update(float deltaTime)
 void Player::Draw(sf::RenderTarget& target)
 {
 	target.draw(this->sprite);
-
+	sf::RectangleShape rect(sf::Vector2f(128, 128));
+	rect.setOutlineColor(sf::Color::Red);
+	rect.setFillColor(sf::Color::Transparent);
+	rect.setPosition(this->m_physic_component->getColliders()[0][0].GetPosition());
+	rect.setOutlineThickness(1);
+	target.draw(rect);
 }
 
 void Player::UpdateZ()

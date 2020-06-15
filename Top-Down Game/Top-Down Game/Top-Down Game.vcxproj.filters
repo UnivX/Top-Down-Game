@@ -95,8 +95,12 @@
     <ClCompile Include="Collisions.cpp">
       <Filter>Game\PhysicEngine</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicComponent.cpp" />
-    <ClCompile Include="PhysicEngine.cpp" />
+    <ClCompile Include="PhysicComponent.cpp">
+      <Filter>Game\PhysicEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicEngine.cpp">
+      <Filter>Game\PhysicEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentSystem.h">
@@ -142,8 +146,12 @@
     <ClInclude Include="Collisions.h">
       <Filter>Game\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicComponent.h" />
-    <ClInclude Include="PhysicEngine.h" />
+    <ClInclude Include="PhysicComponent.h">
+      <Filter>Game\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicEngine.h">
+      <Filter>Game\PhysicEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Documentazione Physic.txt">

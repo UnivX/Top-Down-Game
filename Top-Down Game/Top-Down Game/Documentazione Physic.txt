@@ -1,8 +1,28 @@
 ogni entità fisica possiede un physic component, che ha due puntatori, uno per il rigid body e l'altro per il collider:
 
 PHYSIC COMPONENT:
--RigidBody*
--std::vector<Collider>
+	-RigidBody* -> creare un nuovo rigidBody;
+
+	-std::vector<Collider>
+
 
 la fisica è gestita dal physicEngine, che testa tutte le collisioni tra le entità
-quindi se due entità collidono viene richiamato collider.OnColliodePtr(), una funzione personalizata, succesivamente se l'entità possiede un rigidbody il physic engine calcola la soluzione per la accelerazione e la posizione che vengono passati al rigidbody
+quindi se due entità collidono viene richiamato collider.OnColliodePtr(), una funzione personalizata, 
+succesivamente se l'entità possiede un rigidbody il physic engine calcola la soluzione per la accelerazione e la posizione che vengono passati al rigidbody e poi applicati
+
+
+Collider:
+
+	-bool isPhysic; -> indica se il collider andrà ad interagire con il rigid body, e quindi essere fisico
+
+	-AABB aabb;	-> un collider aabb per la fase larga
+
+	-SatCollisionMesh m_sat_mesh; ->un collider più accurato
+
+	-bool isAABB; -> determina se la collisione è solo aabb o ha anche uno collider sat
+
+	-sf::Vector2f pos; -> la posizione dell collider
+
+	-sf::Vector2f centroid; -> il baricentro
+
+	-void (*OnColliodePtr)(CollideInformation&); -> una funzione personalizata che viene chiamata ogni collisione

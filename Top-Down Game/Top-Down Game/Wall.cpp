@@ -23,7 +23,6 @@ void Wall::Draw(sf::RenderTarget& target)
 {
 	this->m_rectangle.setPosition(this->position);
 	target.draw(this->m_rectangle);
-
 }
 
 void Wall::UpdateZ()

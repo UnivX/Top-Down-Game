@@ -8,6 +8,7 @@ RigidBody::RigidBody()
 	this->friction = 0;
 	this->isStatic = false;
 	this->position = sf::Vector2f(0, 0);
+	this->m_mass = 1;
 }
 
 
@@ -15,18 +16,27 @@ RigidBody::~RigidBody()
 {
 }
 
-void RigidBody::OnCollision(CollideInformation& data)
+
+void RigidBody::OnCollision(Hit& data, sf::Vector2f accelerationSolution, float otherMass)
 {
-	this->acceleration = data.accelerationSolution;
-	this->position = data.translationSolution;
+	if (this->isStatic)
+		return;
+	if(otherMass == INFINITY) //if other is static
+		this->acceleration += accelerationSolution * 2.f;
+	else
+		this->acceleration += accelerationSolution;
+	this->position += data.normal * data.overlap;
 }
 
 void RigidBody::Update(float dt)
 {
-	this->position += this->acceleration * dt;
+	if (this->isStatic)
+		return;
+
+	this->position += this->acceleration / m_mass * dt;
 
 	//update acceleration / friction
-	float deltaFriction = this->friction * dt;
+	float deltaFriction = this->friction * m_mass * dt;
 
 
 	//update x acceleration
@@ -112,9 +122,21 @@ bool RigidBody::GetIsDynamic()
 void RigidBody::SetStatic()
 {
 	this->isStatic = true;
+	this->m_mass = INFINITY;
 }
 
 void RigidBody::SetDynamic()
 {
 	this->isStatic = false;
+	this->m_mass = 1;
+}
+
+void RigidBody::SetMass(float mass)
+{
+	this->m_mass = mass;
+}
+
+float RigidBody::GetMass()
+{
+	return this->m_mass;
 }

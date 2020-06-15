@@ -28,4 +28,6 @@ sf::Vector2f rotateVector90(const sf::Vector2f& vec);
 
 sf::Vector2f DegreeToVector(float floatDegree);
 
+float sign(float n);
+
 #endif // !UTILITY_H

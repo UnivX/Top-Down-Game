@@ -7,7 +7,7 @@ Camera::Camera()
 	this->followed_entity;
 	this->m_trauma = 0;
 	this->trauma_reducing = 0.9;
-	this->m_camera_smoothness = 0.1;
+	this->m_camera_smoothness = 0.2;
 	this->maxAngleShaking = 2;
 	this->maxOffSetShaking = 2;
 	this->m_angle = 0;

@@ -36,11 +36,20 @@ sf::RenderWindow* GameEngine::GetWindow()
 void GameEngine::StartGameLoop()
 {
 	sf::Clock clock;
+	int frames = 0;
+	float frameTime = 0;
 	while (this->window->isOpen())
 	{
+		frames++;
 		this->EventUpdate();
 		float dt = clock.restart().asSeconds();
-		std::cout << 1 / dt << std::endl;
+		frameTime += dt;
+		if (frameTime > 1)
+		{
+			std::cout << frames << std::endl;
+			frameTime = 0;
+			frames = 0;
+		}
 		this->Update(dt);
 		this->Draw(dt);
 	}

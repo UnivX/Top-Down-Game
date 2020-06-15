@@ -44,6 +44,9 @@
     <Filter Include="Game\PhysicEngine">
       <UniqueIdentifier>{216162e7-d4cf-42f4-960e-d48207191604}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\PhysicEngine\Documentazione">
+      <UniqueIdentifier>{fe358f81-68cc-426e-8be7-50da4c5fdab7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentSystem.cpp">
@@ -83,15 +86,17 @@
     <ClCompile Include="Wall.cpp">
       <Filter>Game\EntityThings\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionEngine.cpp">
-      <Filter>Game\PhysicEngine</Filter>
-    </ClCompile>
     <ClCompile Include="MultiThreading.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
     <ClCompile Include="RigidBody.cpp">
       <Filter>Game\PhysicEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Collisions.cpp">
+      <Filter>Game\PhysicEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicComponent.cpp" />
+    <ClCompile Include="PhysicEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentSystem.h">
@@ -128,19 +133,21 @@
     <ClInclude Include="Wall.h">
       <Filter>Game\EntityThings\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionEngine.h">
-      <Filter>Game\PhysicEngine</Filter>
-    </ClInclude>
     <ClInclude Include="MultiThreading.h">
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="RigidBody.h">
       <Filter>Game\PhysicEngine</Filter>
     </ClInclude>
+    <ClInclude Include="Collisions.h">
+      <Filter>Game\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicComponent.h" />
+    <ClInclude Include="PhysicEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Documentazione Physic.txt">
-      <Filter>Game\PhysicEngine</Filter>
+      <Filter>Game\PhysicEngine\Documentazione</Filter>
     </Text>
   </ItemGroup>
 </Project>

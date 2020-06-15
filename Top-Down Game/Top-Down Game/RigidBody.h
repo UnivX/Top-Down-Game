@@ -1,9 +1,8 @@
 #pragma once
 #ifndef RIGID_BODY_H
 #define RIGID_BODY_H
-
-#include "CollisionEngine.h"
-
+#include "Entity.h"
+#include "Collisions.h"
 //TODO:
 // implementazione della massa nei calcoli
 
@@ -13,7 +12,7 @@ public:
 	RigidBody();
 	~RigidBody();
 
-	void OnCollision(CollideInformation& data);
+	void OnCollision(Hit& data, sf::Vector2f accelerationSolution, float otherMass);
 	void Update(float dt);
 
 	sf::Vector2f GetAcceleration();
@@ -32,11 +31,15 @@ public:
 
 	void SetStatic();
 	void SetDynamic();
+
+	void SetMass(float mass);
+	float GetMass();
 private:
 	sf::Vector2f position;
 	sf::Vector2f acceleration;
 	bool isStatic;
 	float friction;
+	float m_mass;
 };
 
 #endif // !RIGID_BODY_H

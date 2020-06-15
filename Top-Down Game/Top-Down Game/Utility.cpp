@@ -69,3 +69,8 @@ sf::Vector2f DegreeToVector(float floatDegree)
 	float radians = (floatDegree) * (PI / 180.0);
 	return sf::Vector2f(cos(radians), sin(radians));
 }
+
+float sign(float n)
+{
+	return n < 0 ? -1 : 1;
+}

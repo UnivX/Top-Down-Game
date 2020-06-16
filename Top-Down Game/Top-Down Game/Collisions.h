@@ -62,8 +62,16 @@ public:
 
 	bool IsPhysic();
 	void SetIsPhysic(bool val);
-	std::function<void(Collider*, Hit)> OnCollisionFunction;
+
+	//wrapper for the function
+	// esempio per una classe di nome Esempio che ha la funzione void OnCollision(Collider*, Hit)
+	// collider.SetFunctionOnCollide(&Esempio::OnCollide, this)
+	template<class T>
+	void SetFunctionOnCollide(void(T::* function)(Collider*, Hit), T* obj);
+	void SetFunctionOnCollide(void(*function)(Collider*, Hit));
+	std::function<void(Collider*, Hit)> GetOnCollisionFunction();
 private:
+	std::function<void(Collider*, Hit)> OnCollisionFunction;
 	bool m_is_physic;
 	ColliderType m_type;
 	SatCollider m_satCollider;
@@ -79,3 +87,8 @@ std::pair<Hit, Hit> ResolveColliderCollision(Collider& collider1, Collider& coll
 
 #endif // !COLLISIONS_H
 
+template<class T>
+inline void Collider::SetFunctionOnCollide(void(T::* function)(Collider*, Hit), T* obj)
+{
+	this->OnCollisionFunction = std::bind(function, obj, std::placeholders::_1, std::placeholders::_2);
+}

@@ -27,14 +27,15 @@ void PhysicEngine::Update(float dt)
 				for (int e2 = 0; e2 < component2->getColliders()->size(); e2++) {
 					Collider* collider1 = &(*component1->getColliders())[e];
 					Collider* collider2 = &(*component2->getColliders())[e2];
+
 					std::pair<Hit, Hit> hits = ResolveColliderCollision(*collider1, *collider2);
 					//if collide
 					if (hits.first.collide) {
-						if (collider1->OnCollisionFunction != nullptr)
-							collider1->OnCollisionFunction(collider1, hits.first);
+						if (collider1->GetOnCollisionFunction() != nullptr)
+							collider1->GetOnCollisionFunction()(collider1, hits.first);
 
-						if (collider2->OnCollisionFunction != nullptr)
-							collider2->OnCollisionFunction(collider1, hits.second);
+						if (collider2->GetOnCollisionFunction() != nullptr)
+							collider2->GetOnCollisionFunction()(collider1, hits.second);
 
 						//if is physic
 						if (component1->GetRigidBody() != nullptr && component1->GetRigidBody() != nullptr && collider1->IsPhysic() && collider2->IsPhysic()) {

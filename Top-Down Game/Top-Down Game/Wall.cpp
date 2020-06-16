@@ -4,17 +4,17 @@
 
 Wall::Wall()
 {
-	this->m_rectangle = sf::RectangleShape(sf::Vector2f(50, 50));
-	this->m_rectangle.setFillColor(sf::Color::Yellow);
+	sprite = sf::Sprite(global_textures.wall_texture, sf::IntRect(0, 0, 256, 256));
 	this->m_name = "Wall";
 	this->m_physic_component = new PhysicComponent();
 	this->m_physic_component->CreateNewRigidBody();
-	this->m_physic_component->GetRigidBody()->SetDynamic();
-	this->m_physic_component->GetRigidBody()->SetMass(1);
+	this->m_physic_component->GetRigidBody()->SetStatic();
+	//this->m_physic_component->GetRigidBody()->SetDynamic();
+	//this->m_physic_component->GetRigidBody()->SetMass(1);
 	this->m_physic_component->GetRigidBody()->SetFriction(150);
 
 	Collider collider;
-	collider.GenerateAABBCollider(sf::Vector2f(100, 100));
+	collider.GenerateAABBCollider(sf::Vector2f(256, 48));
 	collider.SetIsPhysic(true);
 
 	this->m_physic_component->AddNewCollider(collider);
@@ -30,24 +30,19 @@ void Wall::Update(float deltaTime)
 {
 	this->m_physic_component->GetRigidBody()->Update(deltaTime);
 	this->position = this->m_physic_component->GetRigidBody()->GetPosition();
-	this->m_physic_component->getColliders()[0][0].SetPosition(this->position - sf::Vector2f(12, 12));
+	this->m_physic_component->getColliders()[0][0].SetPosition(this->position + sf::Vector2f(64,128 + 32));
 
 	this->UpdateZ();
 }
 
 void Wall::Draw(sf::RenderTarget& target)
 {
-	this->m_rectangle.setPosition(this->position);
-	target.draw(this->m_rectangle);
+	this->sprite.setPosition(this->position);
+	target.draw(this->sprite);
 }
 
 void Wall::UpdateZ()
 {
-	this->z = this->position.y + this->m_size.y;
+	this->z = this->position.y + 256;
 }
 
-void Wall::SetSize(sf::Vector2f size)
-{
-	this->m_size = size;
-	m_rectangle.setSize(size);
-}

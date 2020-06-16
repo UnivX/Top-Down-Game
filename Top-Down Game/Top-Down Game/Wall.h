@@ -12,10 +12,9 @@ public:
 	void Update(float deltaTime) override;
 	void Draw(sf::RenderTarget& target) override;
 	void UpdateZ() override;
-	void SetSize(sf::Vector2f size);
 
 private:
-	sf::RectangleShape m_rectangle;
+	sf::Sprite sprite;
 	sf::Vector2f m_size;
 	PhysicComponent* m_physic_component;
 };

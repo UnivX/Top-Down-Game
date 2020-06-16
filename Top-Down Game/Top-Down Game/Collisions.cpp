@@ -143,6 +143,16 @@ void Collider::SetIsPhysic(bool val)
 	this->m_is_physic = val;
 }
 
+void Collider::SetFunctionOnCollide(void(*function)(Collider*, Hit))
+{
+	this->OnCollisionFunction = function;
+}
+
+std::function<void(Collider*, Hit)> Collider::GetOnCollisionFunction()
+{
+	return this->OnCollisionFunction;
+}
+
 std::pair<Hit, Hit> ResolveAABB(AabbCollider& collider1, AabbCollider& collider2)
 {
 	Hit hit1, hit2;
@@ -152,45 +162,25 @@ std::pair<Hit, Hit> ResolveAABB(AabbCollider& collider1, AabbCollider& collider2
 	sf::Vector2f halfSize1 = collider1.GetSize() / 2.f;
 	sf::Vector2f halfSize2 = collider2.GetSize() / 2.f;
 	sf::Vector2f delta = collider2.GetPosition() - collider1.GetPosition();
-	float IntersectX = abs(delta.x) - (halfSize2.x + halfSize1.x);
-	float IntersectY = abs(delta.y) - (halfSize2.y + halfSize1.y);
+	sf::Vector2f Overlap(abs(delta.x) - (halfSize2.x + halfSize1.x), abs(delta.y) - (halfSize2.y + halfSize1.y));
 
-	if (IntersectX < 0.f && IntersectY < 0.0f)
+	if (Overlap.x < 0.f && Overlap.y < 0.0f)
 	{
-		if (IntersectX > IntersectY)
-		{
-			if (delta.x > 0.f)
-			{
-				hit1.normal = sf::Vector2f(1, 0);
-				hit1.overlap = IntersectX;
-				hit2.normal = sf::Vector2f(-1, 0);
-				hit2.overlap = IntersectX;
-			}
-			else
-			{
-				hit1.normal = sf::Vector2f(-1, 0);
-				hit1.overlap = IntersectX;
-				hit2.normal = sf::Vector2f(1, 0);
-				hit2.overlap = IntersectX;
-			}
+		sf::Vector2f solution = Overlap;
+		if (Overlap.x > Overlap.y) {
+			hit1.overlap = Overlap.x;
+			hit1.normal = sf::Vector2f(sign(delta.x),0);
+			hit2.overlap = Overlap.x;
+			hit2.normal = sf::Vector2f(-sign(delta.x), 0);
 		}
 		else
 		{
-			if (delta.y > 0.f)
-			{
-				hit1.normal = sf::Vector2f(0, 1);
-				hit1.overlap = IntersectY;
-				hit2.normal = sf::Vector2f(0, -1);
-				hit2.overlap = IntersectY;
-			}
-			else
-			{
-				hit1.normal = sf::Vector2f(0, -1);
-				hit1.overlap = IntersectY;
-				hit2.normal = sf::Vector2f(0, 1);
-				hit2.overlap = IntersectY;
-			}
+			hit1.overlap = Overlap.y;
+			hit1.normal = sf::Vector2f(0,sign(delta.y));
+			hit2.overlap = Overlap.y;
+			hit2.normal = sf::Vector2f(0,-sign(delta.y));
 		}
+
 		hit1.collide = true;
 		hit2.collide = true;
 	}

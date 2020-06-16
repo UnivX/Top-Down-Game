@@ -17,6 +17,8 @@ Player::Player()
 	collider.GenerateAABBCollider(sf::Vector2f(128, 128));
 	collider.SetIsPhysic(true);
 
+	collider.SetFunctionOnCollide(&Player::OnCollision, this);
+
 	this->m_physic_component->AddNewCollider(collider);
 	this->m_components.components.push_back(this->m_physic_component);
 }
@@ -64,4 +66,9 @@ void Player::Draw(sf::RenderTarget& target)
 void Player::UpdateZ()
 {
 	this->z = this->position.y + 128;
+}
+
+void Player::OnCollision(Collider* collider, Hit hit)
+{
+	std::cout << "collide\n";
 }

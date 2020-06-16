@@ -13,6 +13,7 @@ public:
 	void Update(float deltaTime) override;
 	void Draw(sf::RenderTarget& target) override;
 	void UpdateZ() override;
+	void OnCollision(Collider* collider, Hit hit);
 private:
 	float velocity;
 	sf::Sprite sprite;

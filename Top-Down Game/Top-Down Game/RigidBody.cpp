@@ -26,7 +26,7 @@ void RigidBody::OnCollision(Hit& data, sf::Vector2f accelerationSolution, float 
 		this->acceleration = dotProduct(this->acceleration, rotateVector90(data.normal))  * rotateVector90(data.normal);
 	else
 		this->acceleration += accelerationSolution;
-	this->position += data.normal * data.overlap / 2.f;
+	this->position += data.normal * data.overlap / 2.f * 1.001f;
 }
 
 void RigidBody::Update(float dt)

@@ -10,10 +10,9 @@ GameEngine::GameEngine() : m_physic_engine(&this->m_entity_engine)
 	this->m_entity_engine.AddEntity(player);
 	this->m_camera.SetEntityToFollow(player);
 
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 100; i++) {
 		std::shared_ptr<Wall> wall = std::make_shared<Wall>();
-		wall->SetSize(sf::Vector2f(100, 100));
-		wall->SetPosition(sf::Vector2f(i * 100, 0));
+		wall->GetComponents()->GetComponent<PhysicComponent>()->GetRigidBody()->SetPosition(sf::Vector2f(i * 256, 0));
 		this->m_entity_engine.AddEntity(wall);
 	}
 }

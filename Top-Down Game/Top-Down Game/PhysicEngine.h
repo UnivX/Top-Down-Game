@@ -11,6 +11,7 @@ public:
 	~PhysicEngine();
 	void Update(float dt);
 private:
+	void ResolveEntity(GlobalEntityList::iterator& i, GlobalEntityList::iterator& j);
 	EntityEngine* entityEnginePtr;
 
 };

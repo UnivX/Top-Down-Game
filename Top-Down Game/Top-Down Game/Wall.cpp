@@ -30,7 +30,7 @@ void Wall::Update(float deltaTime)
 {
 	this->m_physic_component->GetRigidBody()->Update(deltaTime);
 	this->position = this->m_physic_component->GetRigidBody()->GetPosition();
-	this->m_physic_component->getColliders()[0][0].SetPosition(this->position + sf::Vector2f(64,128 + 32));
+	this->m_physic_component->getColliders()[0][0].SetPosition(this->position + sf::Vector2f(0,256-48));
 
 	this->UpdateZ();
 }

@@ -153,41 +153,75 @@ std::function<void(Collider*, Hit)> Collider::GetOnCollisionFunction()
 	return this->OnCollisionFunction;
 }
 
+//need rework
 std::pair<Hit, Hit> ResolveAABB(AabbCollider& collider1, AabbCollider& collider2)
 {
 	Hit hit1, hit2;
 	hit1.collide = false;
 	hit2.collide = false;
+	sf::Vector2f bestAxis;
+	float bestMag = INFINITY;
 
-	sf::Vector2f halfSize1 = collider1.GetSize() / 2.f;
-	sf::Vector2f halfSize2 = collider2.GetSize() / 2.f;
-	sf::Vector2f delta = collider2.GetPosition() - collider1.GetPosition();
-	sf::Vector2f Overlap(abs(delta.x) - (halfSize2.x + halfSize1.x), abs(delta.y) - (halfSize2.y + halfSize1.y));
+	//first axis (1,0)
+	float min1 = collider1.GetPosition().x;
+	float min2 = collider2.GetPosition().x;
 
-	if (Overlap.x < 0.f && Overlap.y < 0.0f)
-	{
-		sf::Vector2f solution = Overlap;
-		if (Overlap.x > Overlap.y) {
-			hit1.overlap = Overlap.x;
-			hit1.normal = sf::Vector2f(sign(delta.x),0);
-			hit2.overlap = Overlap.x;
-			hit2.normal = sf::Vector2f(-sign(delta.x), 0);
-		}
-		else
+	float max1 = collider1.GetPosition().x + collider1.GetSize().x;
+	float max2 = collider2.GetPosition().x + collider2.GetSize().x;
+
+	
+	if (max1 >= min2 && max2 >= min1) {
+		//calcola se è più corta la soluzione normale o invertita
+		float mag = max1 - min2;
+		float invMag = max2 - min1;
+		float localBestMag = std::min(mag, invMag);
+		if (localBestMag < bestMag)
 		{
-			hit1.overlap = Overlap.y;
-			hit1.normal = sf::Vector2f(0,sign(delta.y));
-			hit2.overlap = Overlap.y;
-			hit2.normal = sf::Vector2f(0,-sign(delta.y));
+			bestMag = localBestMag;
+			bestAxis = sf::Vector2f(1, 0);
+			if (bestMag == invMag)
+				bestAxis *= -1.f;
 		}
-
-		hit1.collide = true;
-		hit2.collide = true;
 	}
+	//se non intersecano finisci
+	else 
+		return std::pair<Hit, Hit>(hit1, hit2);
+
+	//second axis (0,1)
+	min1 = collider1.GetPosition().y;
+	min2 = collider2.GetPosition().y;
+
+	max1 = collider1.GetPosition().y + collider1.GetSize().y;
+	max2 = collider2.GetPosition().y + collider2.GetSize().y;
+
+
+	if (max1 >= min2 && max2 >= min1) {
+		//calcola se è più corta la soluzione normale o invertita
+		float mag = max1 - min2;
+		float invMag = max2 - min1;
+		float localBestMag = std::min(mag, invMag);
+		if (localBestMag < bestMag)
+		{
+			bestMag = localBestMag;
+			bestAxis = sf::Vector2f(0, 1);
+			if (bestMag == invMag)
+				bestAxis *= -1.f;
+		}
+	}
+	//se non intersecano finisci
+	else
+		return std::pair<Hit, Hit>(hit1, hit2);
+	hit1.collide = true;
+	hit2.collide = true;
+	hit1.normal = -bestAxis;
+	hit2.normal = bestAxis;
+	hit1.overlap = bestMag;
+	hit2.overlap = bestMag;
 
 	return std::pair<Hit, Hit>(hit1, hit2);
 }
 
+//best mag bug
 std::pair<Hit, Hit> ResolveSAT(SatCollider& collider1, SatCollider& collider2)
 {
 	Hit hit1, hit2;

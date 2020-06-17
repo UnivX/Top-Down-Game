@@ -5,6 +5,7 @@
 PhysicComponent::PhysicComponent()
 {
 	this->rigidBody = nullptr;
+	this->m_colliders_size = 0;
 }
 
 
@@ -30,4 +31,10 @@ void PhysicComponent::CreateNewRigidBody()
 void PhysicComponent::AddNewCollider(Collider& collider)
 {
 	this->colliders.push_back(collider);
+	this->m_colliders_size++;
+}
+
+int PhysicComponent::GetCollidersSize()
+{
+	return this->m_colliders_size;
 }

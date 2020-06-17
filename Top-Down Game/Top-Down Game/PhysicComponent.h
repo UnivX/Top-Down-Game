@@ -17,8 +17,9 @@ public:
 
 	void CreateNewRigidBody();
 	void AddNewCollider(Collider& collider);
-
+	int GetCollidersSize();
 protected:
+	int m_colliders_size;
 	RigidBody* rigidBody;
 	std::vector<Collider> colliders;
 };
